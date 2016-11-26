@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="GoClimb.Core.Pages.LogsPage"
+			 xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:forms="using:Xamarin.Forms"
+			 Title="Logs">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Name="Add +" Command="{Binding AddCommand}" />
+	</ContentPage.ToolbarItems>
+	<StackLayout>
+		<ListView IsPullToRefreshEnabled="true"
+				  IsRefreshing="{Binding IsRefreshing, Mode=OneWay}"
+				  ItemsSource="{Binding LogsList}"
+				  RefreshCommand="{Binding LoadDataCommand}"
+				  SelectedItem="{Binding SelectedLog}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<TextCell Text="{Binding Id}" />
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</StackLayout>
+</ContentPage>
