@@ -46,7 +46,7 @@ namespace GoClimb.Core.ViewModels
 
 			Mvx.Warning ("ID: " + logId.ToString ());
 
-			Log = await logsFacade.getLog (logId);
+			Log = await logsFacade.GetLog (logId);
 		}
 	}
 }

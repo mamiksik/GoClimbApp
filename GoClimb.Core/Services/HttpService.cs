@@ -4,8 +4,9 @@ using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using MvvmCross.Platform;
+using GoClimb.Core.Model;
 
-namespace GoClimb.Core.Model
+namespace GoClimb.Core.Service
 {
 	public interface IHttpService
 	{
@@ -15,11 +16,13 @@ namespace GoClimb.Core.Model
 	public class HttpService : IHttpService
 	{
 		private HttpClient httpClient;
+		
+		private readonly IAuthService authService;
 
-		public HttpService ()
-		{
-			//TODO: Should be injected from config
+		public HttpService (IAuthService authService)
+		{		
 			httpClient = new HttpClient ();
+			this.authService = authService;
 		}
 
 		public async Task<Response> getRequest (string url)
@@ -28,7 +31,7 @@ namespace GoClimb.Core.Model
 			//#if __ANDROID__
 			//baseUrl = "http://10.0.2.2/GoClimb/www/";
 			//#endif
-			url = baseUrl + url + "?token=whmj7an5s0o4g2mlgj2h4pk2ptk1dlcm";
+			url = baseUrl + url + "?token=" + authService.GetApiToken();
 			Mvx.Warning (url);
 
 			try {

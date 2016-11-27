@@ -6,6 +6,7 @@ using UIKit;
 using Xamarin.Forms;
 using MvvmCross.Forms.Presenter.iOS;
 using MvvmCross.Forms.Presenter.Core;
+//using GoClimb.IOS;
 
 namespace GoClimb.iOS
 {
@@ -31,14 +32,8 @@ namespace GoClimb.iOS
 			Forms.Init ();
 
 			var xamarinFormsApp = new MvxFormsApp ();
-			//xamarinFormsApp.MainPage = new TabbedPage();
-
-			return new MvxFormsIosPagePresenter (Window, xamarinFormsApp);
-			//return new IosTabbedPresenter (Window, xamarinFormsApp);
-			//var t = new MvxPrese<>;
-			//test.ChangePresentation (t);
-			//return test;
-			//return new MvxForms ();
+			//return new MvxFormsIosPagePresenter (Window, xamarinFormsApp);
+			return new IOSPresenter (Window, xamarinFormsApp);
 		}
 	}
 }

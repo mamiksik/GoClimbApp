@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using GoClimb.Core.Service;
 
 namespace GoClimb.Core.Model.Facades
 {

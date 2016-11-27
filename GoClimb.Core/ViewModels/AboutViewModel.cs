@@ -11,7 +11,7 @@ namespace GoClimb.Core.ViewModels
 			//get { return new MvxCommand (() =>  Mvx.Warning("Command tested")); }
 			get {
 				return new MvxCommand (() =>
-  					ShowViewModel<TestViewModel> ()  					
+  					ShowViewModel<LoginViewModel> ()  					
 					//Mvx.Warning ("Command tested")
 				);
 			}

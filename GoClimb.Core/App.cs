@@ -1,14 +1,17 @@
-﻿using MvvmCross.Platform.IoC;
+﻿using MvvmCross.Platform;
+using MvvmCross.Platform.IoC;
 using MvvmCross.Core.ViewModels;
 using GoClimb.Core.ViewModels;
-
 using System.Collections.Generic;
+
+using GoClimb.Core.Service;
 
 namespace GoClimb.Core
 {
 	public class App : MvxApplication
 	{
-
+		public static readonly string AppName = "com.whiteline.GoClimb";
+		
 		public override void Initialize ()
 		{
 			CreatableTypes ()
@@ -31,12 +34,13 @@ namespace GoClimb.Core
 		public void Start (object hint = null)
 		{
 
-			//var auth = Mvx.Resolve<IAuth> ();
-			//if (auth.Check ()) {
-			//	ShowViewModel<HomeViewModel> ();
-			//} else {
-			ShowViewModel<TabbedViewModel> ();
-			//}
+			var auth = Mvx.Resolve<IAuthService> ();
+			auth.Logout ();
+			if (auth.Check ()) {
+				ShowViewModel<TabbedViewModel> ();
+			} else {
+				ShowViewModel<LoginViewModel> ();
+			}
 		}
 	}
 }

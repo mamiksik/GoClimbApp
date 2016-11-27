@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDisplayName</key>
 	<string>GoClimb</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.companyname.GoClimb</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -30,5 +28,7 @@
 	<string>9.0</string>
 	<key>CFBundleName</key>
 	<string>GoClimb</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.whiteline.goclimb</string>
 </dict>
 </plist>

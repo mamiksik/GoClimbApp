@@ -14,15 +14,17 @@ namespace GoClimb.Core.Pages
 		{
 			addTab<LogsViewModel> ();
 			addTab<AboutViewModel> ();
-			addTab<TestViewModel> ();
+			addTab<LoginViewModel> ();
 		}
 
 		private void addTab<T> ()
 		{
 			var request = new MvxViewModelRequest (typeof (T), null, null, null);
 			var page = MvxPresenterHelpers.CreatePage (request);
-		
 			page.BindingContext = MvxPresenterHelpers.LoadViewModel (request); ;
+			
+			//var navigation = new NavigationPage (page);
+			//navigation.Title = page.Title;
 			Children.Add (page);
 		}
 	}

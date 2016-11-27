@@ -7,15 +7,16 @@ using Newtonsoft.Json.Linq;
 
 using GoClimb.Core.Model.Entities;
 using GoClimb.Core.Model;
+using GoClimb.Core.Service;
 using MvvmCross.Platform;
 
 namespace GoClimb.Core.Model.Facades
 {
 	public interface ILogsFacade
 	{
-		Task<List<Log>> getAllLogs ();
+		Task<List<Log>> GetAllLogs ();
 
-		Task<Log> getLog (int logId);
+		Task<Log> GetLog (int logId);
 	}
 
 	public class LogsFacade : BaseFacade, ILogsFacade
@@ -28,11 +29,11 @@ namespace GoClimb.Core.Model.Facades
 
 		}
 
-		public async Task<List<Log>> getAllLogs ()
+		public async Task<List<Log>> GetAllLogs ()
 		{
 			if (logs.Count <= 0) {
 				Response response = await httpService.getRequest ("api/en/v1/logs");
-				logs = response.getListByKey<Log> ("logs");
+				logs = response.GetListByKey<Log> ("logs");
 			}
 
 			Mvx.Warning (logs.Count.ToString());
@@ -42,7 +43,7 @@ namespace GoClimb.Core.Model.Facades
 			return logs;
 		}
 
-		public async Task<Log> getLog (int logId)
+		public async Task<Log> GetLog (int logId)
 		{
 			Response response = await httpService.getRequest ("api/en/v1/logs/" + logId);
 			return JsonConvert.DeserializeObject<Log> (response.Data["log"].ToString());

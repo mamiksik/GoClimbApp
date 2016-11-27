@@ -67,7 +67,7 @@ namespace GoClimb.Core.ViewModels
 			try {
 				IsRefreshing = true;
 				Mvx.Warning ("Loading Data");
-				LogsList = new MvxObservableCollection<Log> (await logsFacade.getAllLogs ());
+				LogsList = new MvxObservableCollection<Log> (await logsFacade.GetAllLogs ());
 				IsRefreshing = false;
 			} catch (Exception e) {
 				//Todo: No internet conection

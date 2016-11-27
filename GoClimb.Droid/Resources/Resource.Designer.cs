@@ -26,7 +26,6 @@ namespace GoClimb.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::GoClimb.Droid.Resource.Attribute.actionBarSize;
 			global::BottomBar.Droid.Resource.Animation.abc_fade_in = global::GoClimb.Droid.Resource.Animation.abc_fade_in;
 			global::BottomBar.Droid.Resource.Animation.abc_fade_out = global::GoClimb.Droid.Resource.Animation.abc_fade_out;
 			global::BottomBar.Droid.Resource.Animation.abc_grow_fade_in_from_bottom = global::GoClimb.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -3457,6 +3456,7 @@ namespace GoClimb.Droid
 			global::BottomNavigationBar.Resource.Styleable.ViewStubCompat_android_id = global::GoClimb.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::BottomNavigationBar.Resource.Styleable.ViewStubCompat_android_inflatedId = global::GoClimb.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::BottomNavigationBar.Resource.Styleable.ViewStubCompat_android_layout = global::GoClimb.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::GoClimb.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation

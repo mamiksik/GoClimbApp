@@ -29,7 +29,7 @@ namespace GoClimb.Droid
 
 		protected override IMvxAndroidViewPresenter CreateViewPresenter ()
 		{
-			var presenter = new MvxFormsDroidPagePresenter ();
+			var presenter = new AndroidPresenter ();
 			Mvx.RegisterSingleton<IMvxViewPresenter> (presenter);
 
 			return presenter;

@@ -17,7 +17,7 @@ namespace GoClimb.Core.Model
 			this.Data = Data;
 		}
 
-		public List<T> getListByKey<T>(string key)
+		public List<T> GetListByKey<T>(string key)
 		{
 			List<T> list = new List<T>();
 			foreach (var child in Data[key].Children())

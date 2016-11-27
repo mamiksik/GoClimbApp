@@ -2,9 +2,9 @@
 
 namespace GoClimb.Core.Pages
 {
-	public partial class TestPage : ContentPage
+	public partial class LoginPage : ContentPage
 	{
-		public TestPage ()
+		public LoginPage ()
 		{
 			InitializeComponent ();
 		}
