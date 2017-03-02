@@ -1,15 +1,27 @@
+//Angular
 import {NgModule, NO_ERRORS_SCHEMA} from "@angular/core";
 
+//Typescript
 import {platformNativeScriptDynamic} from "nativescript-angular/platform";
 import {NativeScriptModule} from "nativescript-angular/nativescript.module";
-import {NativeScriptRouterModule, RouterExtensions} from "nativescript-angular";
+import {NativeScriptRouterModule} from "nativescript-angular";
 
+//Bootstrap
 import {AppComponent} from "./Components/App/app.component";
-import {Components} from "./Components/components";
-import {ComponentsRoutes} from "./Components/routes";
+
+//Providers
 import {Services} from "./Services/services";
 
+//Components
+import {Components} from "./Components/components";
+import {ComponentsRoutes} from "./Components/routes";
+
+//Platform specific
 import * as application from 'application';
+import {iOSDelegate} from "./PlatformSpecific/iosDelegate";
+
+//DI
+import {AuthService} from "./Services/auth.service";
 
 @NgModule({
 	bootstrap: [AppComponent],
@@ -26,23 +38,20 @@ import * as application from 'application';
 		...<any>Services
 	]
 })
+
 export class AppModule
 {
-}
-
-
-
-
-
-class MyDelegate extends UIResponder implements UIApplicationDelegate {
-	public static ObjCProtocols = [UIApplicationDelegate];
-
-	applicationOpenURLSourceApplicationAnnotation(application: UIApplication, url: NSURL, sourceApplication: string, annotation: any): boolean {
-		console.log(url.absoluteString);
-		console.log(url.filePathURL.absoluteString);
-		return url.absoluteString == 'GoTrackApp';
+	constructor(authSevice: AuthService){
+		if(application.ios) {
+			//Inject DI components as static to delegate, I think it is easiest way.
+			iOSDelegate.injectComponents(authSevice);
+		}
 	}
 }
 
-application.ios.delegate = MyDelegate;
+//Bind platform specific ios delegate to application
+if(application.ios) {
+	application.ios.delegate = iOSDelegate;
+}
+
 platformNativeScriptDynamic().bootstrapModule(AppModule);

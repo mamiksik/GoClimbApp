@@ -1,11 +1,8 @@
-import {Component, transition} from "@angular/core";
-
-import {UserService} from "../../Services/user.service";
+import {Component} from "@angular/core";
 import {RouterExtensions} from "nativescript-angular";
 
-
-
-
+//DI
+import {AuthService} from "../../Services/auth.service";
 
 @Component({
 	selector: "app",
@@ -14,13 +11,13 @@ import {RouterExtensions} from "nativescript-angular";
 export class AppComponent
 {
 
-	constructor(private routerExt: RouterExtensions, private userService: UserService)
+	constructor(private routerExt: RouterExtensions, private authService: AuthService)
 	{
 	}
 
 	ngOnInit()
 	{
-		if(!this.userService.isLoggedIn()) {
+		if(!this.authService.isLoggedIn()) {
 			this.routerExt.navigate(['login'], { clearHistory: true, animated: false});
 		}
 	}

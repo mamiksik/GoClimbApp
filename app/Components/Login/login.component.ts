@@ -1,7 +1,12 @@
+//Angular
 import {Component} from "@angular/core";
-import {Page} from "ui/page";
+
+//Utils
 import {openUrl} from "utils/utils";
 import config from "../../config";
+
+//DI
+import {AuthService} from "../../Services/auth.service";
 
 @Component({
 	moduleId: module.id,
@@ -11,13 +16,18 @@ import config from "../../config";
 
 export class LoginComponent
 {
-	constructor()
+	constructor(public authService: AuthService)
 	{
-
+		console.log(this.authService.isLoggedIn())
 	}
 
 	tapLogin()
 	{
 		openUrl(config.AUTH_URL);
+	}
+
+	getInfo()
+	{
+		console.log(this.authService.isLoggedIn());
 	}
 }
