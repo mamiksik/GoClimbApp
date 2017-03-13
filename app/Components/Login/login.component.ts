@@ -7,6 +7,7 @@ import config from "../../config";
 
 //DI
 import {AuthService} from "../../Services/auth.service";
+import {RouterExtensions} from "nativescript-angular/router";
 
 @Component({
 	moduleId: module.id,
@@ -16,9 +17,11 @@ import {AuthService} from "../../Services/auth.service";
 
 export class LoginComponent
 {
-	constructor(public authService: AuthService)
+	constructor(public authService: AuthService, private routerExt: RouterExtensions)
 	{
-		console.log(this.authService.isLoggedIn())
+		if(this.authService.isLoggedIn()){
+			this.routerExt.navigate(['user-detail'], { clearHistory: true});
+		}
 	}
 
 	tapLogin()

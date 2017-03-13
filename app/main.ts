@@ -4,7 +4,7 @@ import {NgModule, NO_ERRORS_SCHEMA} from "@angular/core";
 //Typescript
 import {platformNativeScriptDynamic} from "nativescript-angular/platform";
 import {NativeScriptModule} from "nativescript-angular/nativescript.module";
-import {NativeScriptRouterModule} from "nativescript-angular";
+import {NativeScriptRouterModule, NativeScriptHttpModule} from "nativescript-angular";
 
 //Bootstrap
 import {AppComponent} from "./Components/App/app.component";
@@ -30,6 +30,7 @@ import {AuthService} from "./Services/auth.service";
 		...<any>Components
 	],
 	imports: [
+		NativeScriptHttpModule,
 		NativeScriptModule,
 		NativeScriptRouterModule,
 		NativeScriptRouterModule.forRoot(ComponentsRoutes)
@@ -49,7 +50,7 @@ export class AppModule
 	}
 }
 
-//Bind platform specific ios delegate to application
+//Bind platform specific delegate to application
 if(application.ios) {
 	application.ios.delegate = iOSDelegate;
 }

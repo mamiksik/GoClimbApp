@@ -1,9 +1,14 @@
-<StackLayout>
-	<StackLayout class="p-10">
-		<Label [text]="'LOGIN_TITLE' " textWrap="true"></Label>
-
-		<Button (tap)="tapLogin()" text="Login"></Button>
-		<Button (tap)="getInfo()" text="Get info"></Button>
-	</StackLayout>
-	<!--<router-outlet></router-outlet>-->
+<StackLayout *ngIf="user != null">
+	<ActionBar [title]="user.name" icon="">
+	        <ActionItem (tap)="loadTap()">
+	          <Button class="" text="Left"></Button>
+	        </ActionItem>
+	        <ActionItem (tap)="loadTap()" ios.position="right">
+	          <Button class="" text="Right"></Button>
+	        </ActionItem>
+	</ActionBar>
 </StackLayout>
+<StackLayout *ngIf="user == null">
+	<label text="Test"></label>
+</StackLayout>
+

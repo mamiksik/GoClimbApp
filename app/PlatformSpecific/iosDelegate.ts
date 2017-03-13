@@ -23,9 +23,10 @@ export class iOSDelegate extends UIResponder implements UIApplicationDelegate
 	{
 		if (url.absoluteString){
 			let token = Utils.getQueryParameter('login_token', url.absoluteString);
+			let userId = parseInt(Utils.getQueryParameter('user_id', url.absoluteString));
 			console.log(token);
 			if (token) {
-				iOSDelegate.authService.logIn(token);
+				iOSDelegate.authService.logIn(userId, token);
 			}
 			return true
 		}
